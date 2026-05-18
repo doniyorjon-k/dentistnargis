@@ -40,6 +40,7 @@ body  {
   color: var(--ink);
   background: var(--bg);
   overflow-x: hidden;
+  max-width: 100vw;
 }
 body.nav-open { overflow: hidden; }
 a { color: inherit; text-decoration: none; }
@@ -513,6 +514,7 @@ blockquote cite {
 @media (max-width: 900px) {
   .section-pad { padding: 68px 0; }
 
+  /* Nav */
   .nav-toggle { display: block; }
   .nav-links {
     position: fixed; inset: 76px 20px auto; z-index: 19;
@@ -524,32 +526,68 @@ blockquote cite {
   .nav-links a { padding: 10px 4px; font-size: 16px; }
   .nav-cta { display: none; }
 
+  /* Grids → 1 ustun */
   .hero-grid, .about-grid, .contact-grid, .pricing-card { grid-template-columns: 1fr; }
-  .hero-card { min-height: 460px; }
-  .audience-grid, .services-grid, .why-grid, .results-grid, .reviews-grid {
+
+  /* Hero card — floating kartochkalar ichkariga */
+  .hero-card { min-height: auto; }
+  .floating-card { position: static; white-space: normal; margin-top: 12px; }
+  .card-top, .card-bottom { position: static; }
+  .doctor-portrait { margin-inline: auto; }
+
+  /* Gridlar → 2 ustun */
+  .audience-grid, .services-grid, .why-grid, .reviews-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  /* Keng xizmat kartochkasi → ustunga */
+  .service-card--wide {
+    flex-direction: column; align-items: flex-start; gap: 14px;
+  }
+  .service-card--wide .service-icon { margin-bottom: 0; }
+  .wide-card-btn { width: 100%; text-align: center; justify-content: center; }
+
   .split-heading { display: block; }
   .split-heading > p { max-width: 100%; margin-top: 14px; }
 }
 
 /* ── Responsive 620px ───────────────────────────────────── */
 @media (max-width: 620px) {
-  .container { width: min(100% - 28px, 1120px); }
-  .hero { padding-top: 54px; }
-  h1 { font-size: 42px; }
-  h2 { font-size: 28px; }
+  html { overflow-x: hidden; }
+  .container { width: calc(100% - 28px); }
+  .section-pad { padding: 52px 0; }
+  .hero { padding-top: 44px; }
 
-  .hero-stats { grid-template-columns: repeat(3, 1fr); }
-  .audience-grid, .services-grid, .why-grid, .results-grid, .reviews-grid {
+  h1 { font-size: 36px; line-height: 1.05; }
+  h2 { font-size: 26px; }
+
+  /* Announce bar */
+  .announce-bar { font-size: 13px; padding: 10px 16px; }
+  .announce-bar a { display: block; margin: 5px 0 0; }
+
+  /* Hero stats — 3 ta kichikroq */
+  .hero-stats { gap: 8px; }
+  .hero-stats div { padding: 12px 10px; }
+  .hero-stats dt { font-size: 22px; }
+  .hero-stats dd { font-size: 11px; }
+
+  /* Gridlar → 1 ustun */
+  .audience-grid, .services-grid, .why-grid, .reviews-grid {
     grid-template-columns: 1fr;
   }
-  .hero-card { min-height: 380px; }
-  .doctor-portrait { border-radius: 32px; }
-  .floating-card { position: static; margin-top: 12px; }
-  .card-top, .card-bottom { position: static; }
 
-  .footer-content, .price-list li { flex-direction: column; gap: 6px; }
-  .pricing-card { padding: 28px 22px; }
-  .about-visual { min-height: 320px; }
+  /* About */
+  .about-visual { min-height: 280px; }
+  .doctor-portrait { border-radius: 32px; width: 100%; }
+
+  /* Contact */
+  .contact-details { font-size: 14px; }
+  .map-card { min-height: 280px; }
+  .map-card iframe { height: 280px; }
+
+  /* Footer */
+  .footer-content { flex-direction: column; gap: 8px; text-align: center; }
+
+  /* Back to top — chekkadan uzoqroq */
+  .back-to-top { bottom: 18px; right: 16px; width: 42px; height: 42px; font-size: 17px; }
 }
