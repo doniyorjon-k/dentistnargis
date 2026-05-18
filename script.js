@@ -23,3 +23,15 @@ navLinks?.querySelectorAll('a').forEach((link) => {
     document.body.classList.remove('nav-open');
   });
 });
+
+document.addEventListener('click', (e) => {
+  if (
+    navLinks?.classList.contains('is-open') &&
+    !navLinks.contains(e.target) &&
+    !navToggle?.contains(e.target)
+  ) {
+    navToggle?.setAttribute('aria-expanded', 'false');
+    navLinks.classList.remove('is-open');
+    document.body.classList.remove('nav-open');
+  }
+});
